@@ -1,0 +1,67 @@
+﻿<Page x:Class="ProjectVOG.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectVOG.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1920" Background="White"
+      Title="RegistrationPage">
+
+    <Grid>
+
+        <ScrollViewer>
+
+            <StackPanel>
+
+                <TextBlock Text="Регистрация" Style="{StaticResource tbAutorization}"></TextBlock>
+
+                <TextBlock Text="Введите фамилию" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <TextBox x:Name="textBoxSurname" Style="{StaticResource TextBox}" FontSize="20" Height="25"></TextBox>
+
+                <TextBlock Text="Введите фамилию" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <TextBox x:Name="textBoxName" Style="{StaticResource TextBox}" FontSize="20" Height="25"></TextBox>
+
+                <TextBlock Text="Введите отечество" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <TextBox x:Name="textBoxFatherland" Style="{StaticResource TextBox}" FontSize="20" Height="25"></TextBox>
+
+                <TextBlock Text="Введите дату рождения" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <DatePicker Name="dpBirthday" FontSize="20" Width="800" Margin="0, 10, 0, 0" />
+
+                <TextBlock Text="Введите пол" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <StackPanel HorizontalAlignment="Center" Width="800" Margin="0, 10, 0, 0">
+
+                    <RadioButton Name="rbMen" FontSize="20">Мужской</RadioButton>
+
+                    <RadioButton Name="rbWomen" FontSize="20">Женский</RadioButton>
+                    
+                </StackPanel>
+
+                <TextBlock Text="Введите логин" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBox}" FontSize="20" Width="800" Margin="0, 10, 0, 0" Height="25"></TextBox>
+
+                <TextBlock Text="Введите пароль" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <PasswordBox x:Name="passwordBoxPassword" Style="{StaticResource PasswordBox}" FontSize="20" Width="800" Margin="0, 10, 0, 0" Height="25"></PasswordBox>
+
+                <TextBlock Text="Выберите роль" Style="{StaticResource TextBlock}" FontSize="20"></TextBlock>
+
+                <ComboBox Name="cbRole" FontSize="20" Width="800" Margin="0, 10, 0, 0" Height="25"/>
+
+                <Button Name="buttonRegister" Content="Зарегистрироваться" Click="buttonRegister_Click" Cursor="Hand" Style="{StaticResource btnAutorization}"></Button>
+
+                <Button Name="buttonBack" Content="Отмена" Click="buttonBack_Click" Style="{StaticResource btnAutorization}"></Button>
+
+            </StackPanel>
+            
+        </ScrollViewer>
+        
+        
+    </Grid>
+</Page>

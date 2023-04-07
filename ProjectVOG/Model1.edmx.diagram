@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38236807b97c4aaaa2f36f9fe39292bf" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="ProjectVOGModel.Event" Width="1.5" PointX="8.25" PointY="8.125" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Gender" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Genre" Width="1.5" PointX="6" PointY="11" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Order" Width="1.5" PointX="8.25" PointY="5.25" />
+        <EntityTypeShape EntityType="ProjectVOGModel.OrderTicket" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Role" Width="1.5" PointX="3.75" PointY="3.125" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Sinema" Width="1.5" PointX="6" PointY="3.625" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Surdoperevodchik" Width="1.5" PointX="3" PointY="6.375" />
+        <EntityTypeShape EntityType="ProjectVOGModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="ProjectVOGModel.Ticket" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectVOGModel.User" Width="1.5" PointX="6" PointY="6" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Event_User" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Surdoperevodchik_Gender" />
+        <AssociationConnector Association="ProjectVOGModel.FK_User_Gender" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Ticket_Genre" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Order_User" />
+        <AssociationConnector Association="ProjectVOGModel.FK_OrderTicket_Order" />
+        <AssociationConnector Association="ProjectVOGModel.FK_OrderTicket_Ticket" />
+        <AssociationConnector Association="ProjectVOGModel.FK_User_Role" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Ticket_Sinema" />
+        <AssociationConnector Association="ProjectVOGModel.FK_Surdoperevodchik_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,748 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище ProjectVOGModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="idEvent" />
+          </Key>
+          <Property Name="idEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Decription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="idGenre" />
+          </Key>
+          <Property Name="idGenre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderClient" Type="int" Nullable="false" />
+          <Property Name="OrderCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTicket">
+          <Key>
+            <PropertyRef Name="idOrderTicket" />
+          </Key>
+          <Property Name="idOrderTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idOrder" Type="int" Nullable="false" />
+          <Property Name="idTicket" Type="int" Nullable="false" />
+          <Property Name="TicketCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sinema">
+          <Key>
+            <PropertyRef Name="idSinema" />
+          </Key>
+          <Property Name="idSinema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sinema" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Surdoperevodchik">
+          <Key>
+            <PropertyRef Name="idSurdo" />
+          </Key>
+          <Property Name="idSurdo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurnameSurdo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameSurdo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FatherlandSurdo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Decription" Type="nvarchar(max)" />
+          <Property Name="idGender" Type="int" Nullable="false" />
+          <Property Name="PhotoSurdo" Type="nvarchar(max)" />
+          <Property Name="idUser" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleMovie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateMovie" Type="date" Nullable="false" />
+          <Property Name="idGenre" Type="int" Nullable="false" />
+          <Property Name="DecriptionMovie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="idSinema" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fatherland" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="idGender" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Event_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTicket_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderTicket" Type="Self.OrderTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="OrderTicket">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTicket_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="OrderTicket" Type="Self.OrderTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="OrderTicket">
+              <PropertyRef Name="idTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surdoperevodchik_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Surdoperevodchik" Type="Self.Surdoperevodchik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="Surdoperevodchik">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surdoperevodchik_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Surdoperevodchik" Type="Self.Surdoperevodchik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Surdoperevodchik">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="idGenre" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="idGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Sinema">
+          <End Role="Sinema" Type="Self.Sinema" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinema">
+              <PropertyRef Name="idSinema" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="idSinema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ProjectVOGModelContainer">
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTicket" EntityType="Self.OrderTicket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sinema" EntityType="Self.Sinema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Surdoperevodchik" EntityType="Self.Surdoperevodchik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Event_User" Association="Self.FK_Event_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTicket_Order" Association="Self.FK_OrderTicket_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderTicket" EntitySet="OrderTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTicket_Ticket" Association="Self.FK_OrderTicket_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="OrderTicket" EntitySet="OrderTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surdoperevodchik_Gender" Association="Self.FK_Surdoperevodchik_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Surdoperevodchik" EntitySet="Surdoperevodchik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surdoperevodchik_User" Association="Self.FK_Surdoperevodchik_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Surdoperevodchik" EntitySet="Surdoperevodchik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Genre" Association="Self.FK_Ticket_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Sinema" Association="Self.FK_Ticket_Sinema">
+            <End Role="Sinema" EntitySet="Sinema" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectVOGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProjectVOGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Event" EntityType="ProjectVOGModel.Event" />
+          <EntitySet Name="Gender" EntityType="ProjectVOGModel.Gender" />
+          <EntitySet Name="Genre" EntityType="ProjectVOGModel.Genre" />
+          <EntitySet Name="Order" EntityType="ProjectVOGModel.Order" />
+          <EntitySet Name="OrderTicket" EntityType="ProjectVOGModel.OrderTicket" />
+          <EntitySet Name="Role" EntityType="ProjectVOGModel.Role" />
+          <EntitySet Name="Sinema" EntityType="ProjectVOGModel.Sinema" />
+          <EntitySet Name="Surdoperevodchik" EntityType="ProjectVOGModel.Surdoperevodchik" />
+          <EntitySet Name="sysdiagrams" EntityType="ProjectVOGModel.sysdiagrams" />
+          <EntitySet Name="Ticket" EntityType="ProjectVOGModel.Ticket" />
+          <EntitySet Name="User" EntityType="ProjectVOGModel.User" />
+          <AssociationSet Name="FK_Event_User" Association="ProjectVOGModel.FK_Event_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surdoperevodchik_Gender" Association="ProjectVOGModel.FK_Surdoperevodchik_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Surdoperevodchik" EntitySet="Surdoperevodchik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="ProjectVOGModel.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Genre" Association="ProjectVOGModel.FK_Ticket_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="ProjectVOGModel.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTicket_Order" Association="ProjectVOGModel.FK_OrderTicket_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderTicket" EntitySet="OrderTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTicket_Ticket" Association="ProjectVOGModel.FK_OrderTicket_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="OrderTicket" EntitySet="OrderTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="ProjectVOGModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Sinema" Association="ProjectVOGModel.FK_Ticket_Sinema">
+            <End Role="Sinema" EntitySet="Sinema" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surdoperevodchik_User" Association="ProjectVOGModel.FK_Surdoperevodchik_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Surdoperevodchik" EntitySet="Surdoperevodchik" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="idEvent" />
+          </Key>
+          <Property Name="idEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Decription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ProjectVOGModel.FK_Event_User" FromRole="Event" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Surdoperevodchik" Relationship="ProjectVOGModel.FK_Surdoperevodchik_Gender" FromRole="Gender" ToRole="Surdoperevodchik" />
+          <NavigationProperty Name="User" Relationship="ProjectVOGModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="idGenre" />
+          </Key>
+          <Property Name="idGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ticket" Relationship="ProjectVOGModel.FK_Ticket_Genre" FromRole="Genre" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderClient" Type="Int32" Nullable="false" />
+          <Property Name="OrderCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ProjectVOGModel.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderTicket" Relationship="ProjectVOGModel.FK_OrderTicket_Order" FromRole="Order" ToRole="OrderTicket" />
+        </EntityType>
+        <EntityType Name="OrderTicket">
+          <Key>
+            <PropertyRef Name="idOrderTicket" />
+          </Key>
+          <Property Name="idOrderTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOrder" Type="Int32" Nullable="false" />
+          <Property Name="idTicket" Type="Int32" Nullable="false" />
+          <Property Name="TicketCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="ProjectVOGModel.FK_OrderTicket_Order" FromRole="OrderTicket" ToRole="Order" />
+          <NavigationProperty Name="Ticket" Relationship="ProjectVOGModel.FK_OrderTicket_Ticket" FromRole="OrderTicket" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ProjectVOGModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sinema">
+          <Key>
+            <PropertyRef Name="idSinema" />
+          </Key>
+          <Property Name="idSinema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sinema1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ticket" Relationship="ProjectVOGModel.FK_Ticket_Sinema" FromRole="Sinema" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Surdoperevodchik">
+          <Key>
+            <PropertyRef Name="idSurdo" />
+          </Key>
+          <Property Name="idSurdo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurnameSurdo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameSurdo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherlandSurdo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idGender" Type="Int32" Nullable="false" />
+          <Property Name="PhotoSurdo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="ProjectVOGModel.FK_Surdoperevodchik_Gender" FromRole="Surdoperevodchik" ToRole="Gender" />
+          <NavigationProperty Name="User" Relationship="ProjectVOGModel.FK_Surdoperevodchik_User" FromRole="Surdoperevodchik" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleMovie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateMovie" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idGenre" Type="Int32" Nullable="false" />
+          <Property Name="DecriptionMovie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idSinema" Type="Int32" />
+          <NavigationProperty Name="Genre" Relationship="ProjectVOGModel.FK_Ticket_Genre" FromRole="Ticket" ToRole="Genre" />
+          <NavigationProperty Name="OrderTicket" Relationship="ProjectVOGModel.FK_OrderTicket_Ticket" FromRole="Ticket" ToRole="OrderTicket" />
+          <NavigationProperty Name="Sinema" Relationship="ProjectVOGModel.FK_Ticket_Sinema" FromRole="Ticket" ToRole="Sinema" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fatherland" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idGender" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event" Relationship="ProjectVOGModel.FK_Event_User" FromRole="User" ToRole="Event" />
+          <NavigationProperty Name="Gender" Relationship="ProjectVOGModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="Order" Relationship="ProjectVOGModel.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="ProjectVOGModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Surdoperevodchik" Relationship="ProjectVOGModel.FK_Surdoperevodchik_User" FromRole="User" ToRole="Surdoperevodchik" />
+        </EntityType>
+        <Association Name="FK_Event_User">
+          <End Type="ProjectVOGModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ProjectVOGModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surdoperevodchik_Gender">
+          <End Type="ProjectVOGModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="ProjectVOGModel.Surdoperevodchik" Role="Surdoperevodchik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="Surdoperevodchik">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Type="ProjectVOGModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="ProjectVOGModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Genre">
+          <End Type="ProjectVOGModel.Genre" Role="Genre" Multiplicity="1" />
+          <End Type="ProjectVOGModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="idGenre" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="idGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="ProjectVOGModel.User" Role="User" Multiplicity="1" />
+          <End Type="ProjectVOGModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTicket_Order">
+          <End Type="ProjectVOGModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="ProjectVOGModel.OrderTicket" Role="OrderTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="OrderTicket">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTicket_Ticket">
+          <End Type="ProjectVOGModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="ProjectVOGModel.OrderTicket" Role="OrderTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="OrderTicket">
+              <PropertyRef Name="idTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="ProjectVOGModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="ProjectVOGModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Sinema">
+          <End Type="ProjectVOGModel.Sinema" Role="Sinema" Multiplicity="0..1" />
+          <End Type="ProjectVOGModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinema">
+              <PropertyRef Name="idSinema" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="idSinema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surdoperevodchik_User">
+          <End Type="ProjectVOGModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ProjectVOGModel.Surdoperevodchik" Role="Surdoperevodchik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Surdoperevodchik">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ProjectVOGModelContainer" CdmEntityContainer="ProjectVOGEntities">
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="idEvent" ColumnName="idEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="OrderClient" ColumnName="OrderClient" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTicket">
+            <EntityTypeMapping TypeName="ProjectVOGModel.OrderTicket">
+              <MappingFragment StoreEntitySet="OrderTicket">
+                <ScalarProperty Name="TicketCount" ColumnName="TicketCount" />
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idOrderTicket" ColumnName="idOrderTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sinema">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Sinema">
+              <MappingFragment StoreEntitySet="Sinema">
+                <ScalarProperty Name="Sinema1" ColumnName="Sinema" />
+                <ScalarProperty Name="idSinema" ColumnName="idSinema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surdoperevodchik">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Surdoperevodchik">
+              <MappingFragment StoreEntitySet="Surdoperevodchik">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="PhotoSurdo" ColumnName="PhotoSurdo" />
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FatherlandSurdo" ColumnName="FatherlandSurdo" />
+                <ScalarProperty Name="NameSurdo" ColumnName="NameSurdo" />
+                <ScalarProperty Name="SurnameSurdo" ColumnName="SurnameSurdo" />
+                <ScalarProperty Name="idSurdo" ColumnName="idSurdo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProjectVOGModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="ProjectVOGModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="idSinema" ColumnName="idSinema" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DecriptionMovie" ColumnName="DecriptionMovie" />
+                <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+                <ScalarProperty Name="DateMovie" ColumnName="DateMovie" />
+                <ScalarProperty Name="TitleMovie" ColumnName="TitleMovie" />
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ProjectVOGModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Fatherland" ColumnName="Fatherland" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
