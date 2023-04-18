@@ -126,17 +126,17 @@ namespace ProjectVOG.Pages
 
         private void buttonEvent_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new ShowEventPage());
+            FrameClass.frame.Navigate(new ShowEventPage(user));
         }
 
         private void buttonTicket_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new ShowTicketPage());
+            FrameClass.frame.Navigate(new ShowTicketPage(user));
         }
 
         private void buttonSurdo_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new ShowSurdoPage());
+            FrameClass.frame.Navigate(new ShowSurdoPage(user));
         }
 
         private void buttonContact_Click(object sender, RoutedEventArgs e)
